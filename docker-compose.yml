@@ -1,0 +1,53 @@
+version: '3.8'  
+
+services:   
+  # R Studio Server + Shiny Server   
+  rstudio:     
+    build:       
+      context: .       
+      dockerfile: Dockerfile     
+    container_name: r-shiny-workshop     
+    restart: unless-stopped     
+    ports:       
+      - "8787:8787"  # RStudio Server       
+      - "3838:3838"  # Shiny Server     
+    environment:       
+      - PASSWORD=password  # RStudioのパスワード       
+      - ROOT=TRUE         # rootとして実行       
+      - DB_HOST=postgres       
+      - DB_NAME=shinyapp       
+      - DB_USER=postgres       
+      - DB_PASSWORD=postgres       
+      - DB_PORT=5432     
+    volumes:       
+      - ./app:/app                       # 開発用のマウント
+      - ./app:/srv/shiny-server          # Shiny Serverのルートとしてマウント
+      - ./app/data:/srv/shiny-server/data  # データディレクトリ
+    depends_on:       
+      - postgres     
+    networks:       
+      - shiny-network    
+
+  # PostgreSQLデータベース   
+  postgres:     
+    image: postgres:14     
+    container_name: postgres-db     
+    restart: unless-stopped     
+    environment:       
+      - POSTGRES_USER=postgres       
+      - POSTGRES_PASSWORD=postgres       
+      - POSTGRES_DB=shinyapp     
+    ports:       
+      - "5432:5432"     
+    volumes:       
+      - postgres-data:/var/lib/postgresql/data       
+      - ./setup/init.sql:/docker-entrypoint-initdb.d/init.sql     
+    networks:       
+      - shiny-network  
+
+networks:   
+  shiny-network:     
+    driver: bridge  
+
+volumes:   
+  postgres-data:

@@ -1,0 +1,114 @@
+/* カスタムスタイルシート */
+
+/* ヘッダーのスタイリング */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* カードのスタイリング */
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+  transition: all .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .2);
+}
+
+/* カードヘッダーのスタイリング */
+.card-header {
+  font-weight: 600;
+}
+
+/* タブの切り替えアニメーション */
+.tab-pane {
+  transition: opacity .3s ease;
+}
+
+/* プロットの表示エリア */
+.plot-container {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* データテーブルの整形 */
+.dataTables_wrapper {
+  font-size: 0.9rem;
+}
+
+/* カラムヘッダーの色 */
+.dataTables_wrapper .dataTables_scrollHead {
+  background-color: #f8f9fa;
+}
+
+/* infobox のスタイル */
+.info-box {
+  transition: all .3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+}
+
+/* サイドバーアイテムのスタイル */
+.sidebar-menu .nav-item .nav-link {
+  transition: all .2s ease;
+}
+
+.sidebar-menu .nav-item .nav-link:hover {
+  padding-left: 25px;
+}
+
+/* リーフレットマップのスタイル */
+.leaflet-container {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+}
+
+/* ポップアップのスタイル */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-content {
+  margin: 10px 15px;
+  line-height: 1.6;
+}
+
+/* タブレットとモバイル対応 */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 100%;
+  }
+  
+  .info-box {
+    margin-bottom: 15px;
+  }
+}
+
+/* 日本語フォントの設定 */
+body {
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+/* コードブロックのスタイル */
+pre {
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  padding: 10px 15px;
+  border-radius: 0 4px 4px 0;
+  overflow-x: auto;
+}
+
+/* 選択コントロールのスタイル */
+.shiny-input-container {
+  margin-bottom: 15px;
+}
+
+/* ラジオボタンとチェックボックスのスタイル */
+.radio-inline, .checkbox-inline {
+  margin-right: 15px;
+}
